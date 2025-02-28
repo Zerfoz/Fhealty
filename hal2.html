@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function setTampil(){
+            var materi = $('#materi').val();
+            if (materi == "diare")
+                $("#hasil").load('diare.html');
+            else if (materi == "tipes")
+                $("#hasil").load('tipes.html');
+            else if (materi == "radang")
+                $("#hasil").load('radang.html');
+            else if (materi == "maag")
+                $("#hasil").load('maag.html');
+            else if (materi == "cacar")
+                $("#hasil").load('cacar.html');
+            else
+                $("#hasil").load('');
+        }
+    </script>
+</head>
+<body>
+    <div class="containerkesehatan">
+    <div class="text3">ANDA INGIN TAU TENTANG PENYAKIT ?</div>
+    <div class="search-box">
+    <select name="" id="materi" class="search-txt">
+        <option value="diare">Diare</option>
+        <option value="tipes">Tipes</option>
+        <option value="radang">Radang Tenggorokan</option>
+        <option value="maag">Maag</option>
+        <option value="cacar">Cacar Air</option>
+    </select>
+        <button class="search-btn" href="#" onclick="setTampil();">🔍</button>
+    </div>
+    <div class="text4">search disease</div>
+    </div>
+    
+</body>
+</html>

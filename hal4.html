@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        let matakuliah = [];
+        let tambah = () => {
+            var mk = document.getElementById('mk').value;
+            var sks = document.getElementById('sks').value;
+            var nilai = document.getElementById('nilai').value;
+            var dataBaru = [mk, sks, nilai];
+            document.getElementById('mk').value = '';
+            document.getElementById('sks').value = '';
+            document.getElementById('nilai').value = '';
+            matakuliah.push(dataBaru);
+            tampilkan();
+        };
+
+        var hitungIp = () => {
+            var total = 0;
+            var totalSks = 0;
+            for (var i = 0; i < matakuliah.length; i++) {
+                var nilai = matakuliah[i][2];
+                var sks = matakuliah[i][1];
+                if (nilai == 'A') {
+                    total += (0*sks);
+                }
+                totalSks += parseInt(sks);
+            }
+            var ip = parseFloat(total+totalSks);
+            return ip;
+        };
+
+        let tampilkan = () => {
+            let tabel = "<table cellpadding='5' cellspacing='0' border='1'>" +
+                "<tr><td>Menu</td><td>Kalori</td><td>Golongan</td><td>Hapus</td></tr>";
+            for (var i = 0; i < matakuliah.length; i++) {
+                tabel += "<tr>";
+                for (var j = 0; j < matakuliah[i].length; j++) {
+                    tabel += "<td>" + matakuliah[i][j] + "</td>";
+                }
+                tabel += "<td><button onclick='hapus(" + i + ")'>Hapus</button></td>";
+            }
+            tabel += "<tr><td colspan='2'>Jumlah Kalori</td><td colspan='2'>"+ hitungIp() +"</td></tr>";
+            document.getElementById('hasil2').innerHTML = tabel;
+        };
+        let hapus = (i) => {
+            matakuliah.splice(i, 1);
+            tampilkan();
+        }
+
+    </script>
+</head>
+<body>
+    <div class=" calories">
+        <div class="calories1"><div class="textmakanan">MAKANAN</div></div>
+        <div class="calories1"><div class="textmakanan">MINUMAN</div></div>
+        <div class="calories1"><div class="textmakanan">SAYURAN</div></div>
+        </div>
+
+    </div>
+    <div class=" calories">
+        <div class="calories2"><img src="makanan.png" alt=""></div>
+        <div class="calories2"><img src="minuman.png" alt=""></div>
+        <div class="calories2"><img src="sayur.png" alt=""></div>
+    </div>
+
+    <div class="calories3">
+    <h3 class="hitungkalori">Hitung Kalori</h3>
+    <table class="hitungkalori1">
+        <tr>
+            <td>Menu</td><td><input id="mk" size="35"></td>
+        </tr>
+        <tr>
+            <td>Kalori</td><td><input id="sks" size="35"></td>
+        </tr>
+        <tr>
+            <td>Golongan</td>
+            <td>
+                <select name="" id="nilai">
+                    <option value="A" size="35">Golongan A</option>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td><td><button class="bhitungkalori" onclick="tambah()">Hitung</button></td>
+        </tr>
+        <table>
+            <div id="hasil2" class="hasil2"></div>
+        
+        </table>
+    </table>
+</div>
+
+</body>
+</html>
+
